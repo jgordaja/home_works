@@ -33,7 +33,7 @@
 6 Необходимо выбрать номер (`number`), и дату (`date_sale`) из
 таблицы `certificates`  
 
-		SELECT `number`, `date_sale` FROM `certificates`;  
+	SELECT `number`, `date_sale` FROM `certificates`;  
 
 7 В таблицу `towns` добавить запись со следующими полями:
 `name` = Краматорск, `post_index` = 84313  
