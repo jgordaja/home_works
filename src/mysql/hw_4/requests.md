@@ -27,7 +27,7 @@
 
 		SELECT categories.id, categories.name, COUNT(news.id) AS count_news
 		FROM categories
-		INNER JOIN news
+		LEFT JOIN news
 		ON news.category_id = categories.id 
 		GROUP BY categories.name
 
