@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container" id="myApp">
+    <h1>{{ title1 + ' ' + title2}}</h1>
+    <h2>{{ showTitle() }}</h2>
+    <h2>{{ showTitleText('Ну чтобы совсем не скучно было - задаем заголовок через параметр функции', $event) }}</h2>
+
+    <form @submit.prevent="onSubmit">
+        <div class="mb-3">
+            <label for="text" class="form-label">{{ formdata.text }}</label>
+            <input type="text" class="form-control" id="text" value="Удали меня!" @keyup.delete="textDelete">
+        </div>
+        <div class="mb-3">
+            <label for="input" class="form-label" :style="{'color': formdata.color}">{{ formdata.textarea }}</label>
+            <textarea class="form-control" id="input" @input="changeStyle" :style="formdata.style"></textarea>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="checkbox" @click="formdata.checked = ! formdata.checked">
+            <label class="form-check-label" for="checkbox">{{ formdata.checked }}</label>
+        </div>
+        <div class="mb-3">
+            <label for="text2" class="form-label">{{ isChecked() }}</label>
+            <input type="text" class="form-control" id="text2" :disabled="formdata.checked">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="checkbox2" @click="seenFunction">
+            <label class="form-check-label" for="checkbox2">{{ formdata.seen ? 'Текст внизу виден' : 'Текст внизу не виден' }}</label>
+            <p v-if="formdata.seen">Сейчас этот текст видно</p>
+        </div>
+        <p>Текст без поддержки html: {{ myHtml }}</p>
+        <p>Директива v-html: <span v-html="myHtml"></span></p>
+        <div  class="mb-3">
+            <a class="btn btn-primary" @click="showMessageType">Тип события</a>
+        </div>
+        <div  class="mb-3">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body>
+</html>
