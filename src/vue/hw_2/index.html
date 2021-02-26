@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container" id="check">
+    <h1 style="text-align: center">{{ heading }}</h1>
+    <input type="checkbox" @click="switching"> Переключить заголовок (влияние на свойство методом другого объекта)
+</div>
+
+<div class="container" id="myApp">
+
+    <h1 v-if="cheked">{{ titleFirst }}</h1>
+    <h1 v-else>{{ titleSecond }}</h1>
+
+    <input type="checkbox" @click="show=!show"> {{ show ? 'Видно' : 'Не видно' }}
+    <h2 v-show="show">{{ title }}</h2>
+
+    <div class="row m-5">
+        <div class="col">
+            <ul>Список из массива:
+                <li v-for="(firstList, index) in firstLists">
+                    {{ firstList }}
+                    <input type="button" value="del" @click="delItem(index)">
+                </li>
+            </ul>
+            <p>Вычисляемое свойство: {{ sentence }}</p>
+        </div>
+        <div class="col">
+            <ul class="list-group">Меню на обед (список из массива объектов):
+                <li class="list-group-item" v-for="(secondList, index) in secondLists" :key="secondList">
+                    <input class="form-check-input me-1" type="checkbox" :checked="secondList.status">{{ secondList.title }}
+                </li>
+            </ul>
+<!--            <p>Выбрано блюд: {{ countMenu }}</p>-->
+        </div>
+    </div>
+
+    <div class="row m-5">
+        <label>Введите что-нибудь в поле</label>
+        <input v-model="inputText" type="text">
+        <template v-if="inputText">
+            <p>В поле введен следующий текст: </p>
+            <label>{{ inputText }}</label>
+            <label>{{ output }}</label>
+        </template>
+    </div>
+
+    <div class="row m-5">
+        <div class="col">
+            <div>
+                <input type="text" ref="textFocus">
+            </div>
+            <div>
+                <input type="button" @click="gotoFocus()" value="Фокус на поле ввода (#ref)">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body>
+</html>
