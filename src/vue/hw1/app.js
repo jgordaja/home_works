@@ -1,7 +1,6 @@
 Vue.createApp({
     data() {
         return {
-
             title1: 'Заголовок к форме',
             title2: '(через выражение)',
             titleh2: 'Еще один вариант заголовка - через функцию',
@@ -42,9 +41,9 @@ Vue.createApp({
             alert('Ай!')
         },
         changeStyle (event) {
-                this.formdata.color = 'green'
-                this.formdata.textarea = 'Поле не должно оставаться пустым'
-                this.formdata.style = this.formdata.warningStyle
+            this.formdata.color = 'green'
+            this.formdata.textarea = 'Поле не должно оставаться пустым'
+            this.formdata.style = this.formdata.warningStyle
         }
     }
 }).mount('#myApp')
